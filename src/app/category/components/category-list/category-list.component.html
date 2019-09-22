@@ -1,0 +1,10 @@
+<input type="text" [(ngModel)]="this.newCategory.name">
+<button (click)="addCategory()">Add</button>
+
+<app-category 
+    [category]="category"     
+    (update)="update($event, i)"
+    (delete)="delete($event, i)"
+
+    *ngFor="let category of categories; index as i">
+</app-category>
