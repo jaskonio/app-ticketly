@@ -12,6 +12,13 @@ import { CategoryService } from './services/category.service';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     CategoryComponent,
@@ -21,7 +28,13 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     CategoryRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatPaginatorModule
   ],
   providers: [
     CategoryService
