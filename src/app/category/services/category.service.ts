@@ -3,6 +3,7 @@ import { Category } from '../model/category';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ResponseApi } from '../../model/responseApi';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CategoryService {
@@ -11,7 +12,7 @@ export class CategoryService {
   constructor(
     private http: HttpClient
     ) {
-      this.urlHost = 'http://raspberry:32772/api';
+      this.urlHost = environment.baseUrl;
     }
 
   getAll(): Observable<Category[]> {
