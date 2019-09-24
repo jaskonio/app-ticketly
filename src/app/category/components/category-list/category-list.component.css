@@ -1,32 +1,35 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* Structure */
-table {
-width: 100%;
+.mat-column-name {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 90% !important;
+  width: 90% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
-.mat-form-field {
-font-size: 14px;
-width: 100%;
-}
 
-.example-button-row button,
-.example-button-row a {
-  margin-right: 8px;
-}
+.mat-column-actions {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 5% !important;
+  width: 5% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 
-.example-container {
-  overflow: auto;
-}
+  word-break: break-word;
 
-th.mat-column-position, td.mat-column-position {
-  padding-left: 8px;
-}
-
-.mat-table-sticky:first-child {
-  border-right: 1px solid #e0e0e0;
-}
-
-.mat-table-sticky:last-child {
-  border-left: 1px solid #e0e0e0;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
