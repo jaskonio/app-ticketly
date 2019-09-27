@@ -62,23 +62,23 @@ export class CategoryListComponent {
     });
   }
 
-  editCategory(category: Category): void {
-    console.log(category);
-    const copyCategory: Category = Object.assign({}, category);
+  editCategory(currentCategory: Category): void {
+    console.log(currentCategory);
+    const copycurrentCategory: Category = Object.assign({}, currentCategory); // Para no actualizar el valor en la tabla
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
-      data: copyCategory
+      data: copycurrentCategory
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('edit. afterClosed', result);
-      if (result === undefined) {
+    dialogRef.afterClosed().subscribe(modifiedCategory => {
+      console.log('edit. afterClosed', modifiedCategory);
+      if (modifiedCategory === undefined) {
         return;
       }
 
-      this.categoryService.update(result)
+      this.categoryService.update(modifiedCategory)
       .subscribe(responseCategory => {
-        this.updateRowData(category);
+        this.updateRowData(modifiedCategory);
         this.refreshTableData();
       });
     });
@@ -120,6 +120,8 @@ export class CategoryListComponent {
   private updateRowData(category: Category): void {
     this.categories.data = this.categories.data.filter((value) => {
       if (value.id === category.id) {
+        console.log(value);
+        console.log(category);
         value.name = category.name;
       }
 
@@ -128,6 +130,20 @@ export class CategoryListComponent {
   }
 
   private refreshTableData(): void {
-    this.categories.data = this.categories.data;
+    console.log("refreshTableData")
+    // If there's no data in filter we do update using pagination, next page or previous page
+    if (this.categories.filteredData === []) {
+      if (this.categories.paginator.pageIndex === 0) {
+        this.categories.paginator.nextPage();
+        this.categories.paginator.previousPage();
+      } else {
+        this.categories.paginator.previousPage();
+        this.categories.paginator.nextPage();
+      }
+      // If there's something in filter, we reset it to 0 and then put back old value
+    } else {
+      this.categories.filter = '';
+      //this.categories.filter = this.filter.nativeElement.value;
+    }
   }
 }
