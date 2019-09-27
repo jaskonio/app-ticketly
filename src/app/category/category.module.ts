@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { CategoryRoutingModule } from './category-routing.module';
 
-import { CategoryComponent } from './components/category/category.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 
 import { FormsModule } from '@angular/forms';
@@ -24,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    CategoryComponent,
     CategoryListComponent,
     DialogComponent,
     DialogComponent
