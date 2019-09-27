@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Inject } from '@angular/core';
 import { Category } from '../../model/category';
+
 import { CategoryService } from '../../services/category.service';
 
 import { MatTableDataSource, MatTable } from '@angular/material/table';

@@ -20,6 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceBase } from '../shared/service/serviceBase';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
+    ServiceBase,
     CategoryService
   ],
   entryComponents: [DialogComponent]
