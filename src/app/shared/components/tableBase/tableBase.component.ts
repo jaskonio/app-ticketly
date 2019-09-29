@@ -22,6 +22,7 @@ export class TableBaseComponent {
   @Input('service') service: any;
   // tslint:disable-next-line: no-input-rename
   @Input('displayedColumns') displayedColumns: string[];
+  @Input('typeObject') typeObject: any;
 
   pageSizeOptions = [5, 10, 20];
   datasource = new MatTableDataSource<any>();
@@ -38,8 +39,9 @@ export class TableBaseComponent {
     this.loaddatasource();
   }
 
-  addCategory(): void {
-    const rowEmpty: any = new Object();
+  addRow(): void {
+    const rowEmpty: any = Object.assign({}, this.typeObject);
+    console.log('add Row', rowEmpty);
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
