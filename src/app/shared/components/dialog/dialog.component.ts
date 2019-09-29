@@ -1,9 +1,6 @@
-import { Component, OnInit, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Category } from '../../model/category';
+import { Component, Inject} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
-
 
 @Component({
   selector: 'app-dialog',
@@ -17,7 +14,7 @@ export class DialogComponent {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Category) {}
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
