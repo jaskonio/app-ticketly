@@ -20,6 +20,7 @@ export class TableBaseComponent {
 
   // tslint:disable-next-line: no-input-rename
   @Input('service') service: any;
+  // tslint:disable-next-line: no-input-rename
   @Input('displayedColumns') displayedColumns: string[];
 
   pageSizeOptions = [5, 10, 20];
@@ -138,7 +139,7 @@ export class TableBaseComponent {
       // If there's something in filter, we reset it to 0 and then put back old value
     } else {
       this.datasource.filter = '';
-      //this.datasource.filter = this.filter.nativeElement.value;
+      // this.datasource.filter = this.filter.nativeElement.value;
     }
   }
 }
