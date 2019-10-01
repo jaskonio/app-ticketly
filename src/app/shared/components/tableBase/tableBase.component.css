@@ -1,7 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* Structure */
-.mat-column-name {
+.mat-column {
   word-wrap: break-word !important;
   white-space: unset !important;
   flex: 0 0 90% !important;

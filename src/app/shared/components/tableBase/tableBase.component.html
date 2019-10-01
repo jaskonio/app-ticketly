@@ -5,33 +5,35 @@
 <div class="mat-elevation-z8">
 
     <mat-table #table [dataSource]="datasource" matSort class="mat-cell">
-        
-        <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-                <mat-cell *matCellDef="let element" >{{element.name}}</mat-cell>
-        </ng-container>
 
-        <!-- actions -->
-        <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef>
-                <button mat-icon-button color="primary" (click)="addRow()">
-                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-                </button>
-            </mat-header-cell>
+        <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
+            
+            <div *ngIf="column != 'actions'">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+            </div>            
+            <div *ngIf="column == 'actions'">
+                <mat-header-cell *matHeaderCellDef>
+                    <button mat-icon-button color="primary" (click)="addRow()">
+                        <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                    </button>
+                </mat-header-cell>                
+                <mat-cell *matCellDef="let element;">
+                    <button mat-icon-button color="accent" (click)="editCategory(element)">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
 
-            <mat-cell *matCellDef="let row;">
-                <button mat-icon-button color="accent" (click)="editCategory(row)">
-                    <mat-icon aria-label="Edit">edit</mat-icon>
-                </button>
+                    <button mat-icon-button color="accent" (click)="deleteCategory(element)">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </div>
 
-                <button mat-icon-button color="accent" (click)="deleteCategory(row)">
-                    <mat-icon aria-label="Delete">delete</mat-icon>
-                </button>
-            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
     </mat-table>
 
     <mat-paginator [pageSizeOptions]="this.pageSizeOptions"></mat-paginator>

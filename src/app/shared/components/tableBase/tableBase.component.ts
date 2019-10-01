@@ -22,6 +22,7 @@ export class TableBaseComponent {
   @Input('service') service: any;
   // tslint:disable-next-line: no-input-rename
   @Input('displayedColumns') displayedColumns: string[];
+  // tslint:disable-next-line: no-input-rename
   @Input('typeObject') typeObject: any;
 
   pageSizeOptions = [5, 10, 20];
@@ -37,6 +38,27 @@ export class TableBaseComponent {
     this.datasource.sort = this.sort;
 
     this.loaddatasource();
+    this.displayedColumns = this.displayedColumns === undefined ?  this.setDefaultsKeys() : this.displayedColumns;
+  }
+  private setDefaultsKeys(): string[] {
+    let excludeKeys: string[];
+    let keysEnableds: string[];
+
+    excludeKeys = ['id'];
+
+    keysEnableds = Object.keys(this.typeObject);
+
+    keysEnableds = keysEnableds.filter( key => {
+      return !excludeKeys.includes(key);
+    });
+
+    keysEnableds.push(this.AddButtonColumns());
+
+    return keysEnableds;
+  }
+
+  private AddButtonColumns(): string {
+    return 'actions';
   }
 
   addRow(): void {

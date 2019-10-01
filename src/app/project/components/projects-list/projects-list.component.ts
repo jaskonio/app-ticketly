@@ -8,7 +8,6 @@ import { Project } from '../../model/projects';
   styleUrls: ['./projects-list.component.css']
 })
 export class ProjectsListComponent {
-  displayedColumns: string[] = ['name', 'actions'];
   objectComponent = new Project();
 
   constructor(
