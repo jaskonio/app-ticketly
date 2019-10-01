@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class DialogComponent {
 
   form: FormGroup;
+  properties: string[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,13 +20,32 @@ export class DialogComponent {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.form = this.formBuilder.group(this.data);
+    this.properties = this.setDefaultsKeys(this.data, ['id']);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   save() {
-    console.log('DialogComponent', this.data);
+    console.log('DialogComponent');
+    this.properties.forEach(property => {
+      this.data[property] = this.form.controls[property].value;
+    });
+
+    console.log(this.data);
     this.dialogRef.close(this.data);
   }
+
+  private setDefaultsKeys(obj, excludeKeys ): string[] {
+    let keysEnableds: string[];
+
+    keysEnableds = Object.keys(obj);
+
+    keysEnableds = keysEnableds.filter( key => {
+      return !excludeKeys.includes(key);
+    });
+    console.log(keysEnableds);
+    return keysEnableds;
+  }
+
 }

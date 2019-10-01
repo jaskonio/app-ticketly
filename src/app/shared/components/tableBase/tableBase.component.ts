@@ -40,6 +40,7 @@ export class TableBaseComponent {
     this.loaddatasource();
     this.displayedColumns = this.displayedColumns === undefined ?  this.setDefaultsKeys() : this.displayedColumns;
   }
+  
   private setDefaultsKeys(): string[] {
     let excludeKeys: string[];
     let keysEnableds: string[];

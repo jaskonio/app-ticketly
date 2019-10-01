@@ -1,10 +1,18 @@
 <h1 mat-dialog-title>Edit Category</h1>
 <div mat-dialog-content>  
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.name">
-  </mat-form-field>
+<!--   <mat-form-field *ngFor="let property of this.properties" >
+    <input matInput value="{{data[property]}}">
+  </mat-form-field> -->
+  <form [formGroup]="form">
+      <mat-form-field *ngFor="let property of this.properties" >
+          <input matInput value="{{data[property]}}" formControlName="{{property}}">
+        </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.name" (click)="save()" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Ok</button>
 </div>
+
+
+

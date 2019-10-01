@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
+import { Category } from '../../model/category';
 
 @Component({
   selector: 'app-category-list',
@@ -7,7 +8,7 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent {
-  displayedColumns: string[] = ['name', 'actions'];
+  objectComponent = new Category();
 
   constructor(
     public categoryService: CategoryService) {
