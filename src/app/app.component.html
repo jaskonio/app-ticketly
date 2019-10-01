@@ -1,8 +1,35 @@
-<nav>
-    <ul>
-        <li><a routerLink="/categories">Categories</a></li>
-        <li><a routerLink="/projects">Projects</a></li>
-    </ul>
-</nav>
-<router-outlet>    
-</router-outlet>
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon >menu</mat-icon>
+        </button>
+        <h1 mat-button routerLink="/">Ticketly</h1>
+        <span class="menu-spacer"></span>
+        <div>
+            <a mat-button 
+            *ngFor="let option of toolbarOptions"
+            routerLink="{{ option.routerLink}}"> {{option.text}} </a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+                <a 
+                mat-list-item (click)="sidenav.close()" 
+                routerLinkActive="list-item-active" 
+                [routerLinkActiveOptions]="{exact: true}" 
+                *ngFor="let option of navListOptions"
+                routerLink="{{ option.routerLink}}" > <mat-icon matListIcon> {{option.iconName}} </mat-icon> {{option.text}} </a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+        <div style="height: 88vh; width: 80vw;margin-left: 10vw; margin-top: 5vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

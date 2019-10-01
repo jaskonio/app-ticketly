@@ -7,4 +7,34 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app-ticketly';
+  navListOptions = [
+    {
+      text: 'Index',
+      routerLink : '/',
+      iconName: 'home'
+    },
+    {
+      text: 'Categories',
+      routerLink : '/categories',
+      iconName: 'android'
+    },
+    {
+      text: 'Projects',
+      routerLink : '/projects',
+      iconName: 'view_agenda'
+    },
+  ];
+
+  toolbarOptions = [
+    {
+      text: 'Categories',
+      routerLink : '/categories',
+      iconName: 'android'
+    },
+    {
+      text: 'Projects',
+      routerLink : '/projects',
+      iconName: 'view_agenda'
+    },
+  ];
 }
