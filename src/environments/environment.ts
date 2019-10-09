@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://raspberry:32772/api'
+  baseUrl: 'http://192.168.2.115:3000/api'
 };
 
 /*

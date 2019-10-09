@@ -9,6 +9,7 @@ import { Project } from '../../model/projects';
 })
 export class ProjectsListComponent {
   objectComponent = new Project();
+  titleDialog = 'New Proyect';
 
   constructor(
     public projectService: ProjectService

@@ -11,6 +11,7 @@ export class DialogComponent {
 
   form: FormGroup;
   properties: string[];
+  titleModel: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,8 +20,9 @@ export class DialogComponent {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
-    this.form = this.formBuilder.group(this.data);
-    this.properties = this.setDefaultsKeys(this.data, ['id']);
+    this.form = this.formBuilder.group(this.data.data);
+    this.properties = this.setDefaultsKeys(this.data.data, ['id']);
+    this.titleModel = this.data.title;
   }
 
   onNoClick(): void {
@@ -29,11 +31,11 @@ export class DialogComponent {
   save() {
     console.log('DialogComponent');
     this.properties.forEach(property => {
-      this.data[property] = this.form.controls[property].value;
+      this.data.data[property] = this.form.controls[property].value;
     });
 
     console.log(this.data);
-    this.dialogRef.close(this.data);
+    this.dialogRef.close(this.data.data);
   }
 
   private setDefaultsKeys(obj, excludeKeys ): string[] {

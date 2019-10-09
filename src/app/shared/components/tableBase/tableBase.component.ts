@@ -24,6 +24,8 @@ export class TableBaseComponent {
   @Input('displayedColumns') displayedColumns: string[];
   // tslint:disable-next-line: no-input-rename
   @Input('typeObject') typeObject: any;
+  // tslint:disable-next-line: no-input-rename
+  @Input('titleDialog') titleDialog: string;
 
   pageSizeOptions = [5, 10, 20];
   datasource = new MatTableDataSource<any>();
@@ -40,7 +42,7 @@ export class TableBaseComponent {
     this.loaddatasource();
     this.displayedColumns = this.displayedColumns === undefined ?  this.setDefaultsKeys() : this.displayedColumns;
   }
-  
+
   private setDefaultsKeys(): string[] {
     let excludeKeys: string[];
     let keysEnableds: string[];
@@ -65,10 +67,11 @@ export class TableBaseComponent {
   addRow(): void {
     const rowEmpty: any = Object.assign({}, this.typeObject);
     console.log('add Row', rowEmpty);
+    console.log(this.titleDialog);
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
-      data: rowEmpty
+      data: {data: rowEmpty, title: this.titleDialog},
     });
 
     dialogRef.afterClosed().subscribe( rowWithData => {
@@ -90,7 +93,7 @@ export class TableBaseComponent {
     const copyCurrentRow: Category = Object.assign({}, currentRow); // Para no actualizar el valor en la tabla
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
-      data: copyCurrentRow
+      data: {data: copyCurrentRow, title: this.titleDialog}
     });
 
     dialogRef.afterClosed().subscribe(rowModified => {

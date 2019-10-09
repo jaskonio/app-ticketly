@@ -9,7 +9,7 @@ import { Category } from '../../model/category';
 })
 export class CategoryListComponent {
   objectComponent = new Category();
-
+  titleDialog = 'New Category';
   constructor(
     public categoryService: CategoryService) {
   }
