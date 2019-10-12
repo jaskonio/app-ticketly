@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://192.168.2.115:3000/api'
+  baseUrl: 'http://jonataan.local:3000/api'
 };
 
 /*

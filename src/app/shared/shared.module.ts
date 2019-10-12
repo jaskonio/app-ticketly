@@ -15,6 +15,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ServiceBase } from './service/serviceBase';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NotifyService } from './service/notify.service';
+
+
 @NgModule({
   declarations: [
     TableBaseComponent,
@@ -31,10 +35,12 @@ import { ServiceBase } from './service/serviceBase';
     MatIconModule,
     MatPaginatorModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [
-    ServiceBase
+    ServiceBase,
+    NotifyService
   ],
   exports: [
     TableBaseComponent,

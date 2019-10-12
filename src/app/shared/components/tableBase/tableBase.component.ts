@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 import { Category } from 'src/app/category/model/category';
+import { NotifyService } from 'src/app/shared/service/notify.service';
 
 @Component({
   selector: 'app-table-base',
@@ -31,7 +32,8 @@ export class TableBaseComponent {
   datasource = new MatTableDataSource<any>();
 
   constructor(
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    public notify: NotifyService) {
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
@@ -80,11 +82,16 @@ export class TableBaseComponent {
       }
 
       this.service.add(rowWithData)
-      .subscribe( data => {
-        rowWithData.id = data.insertId;
-        this.addRowData(rowWithData);
-        this.refreshTableData();
-      });
+      .subscribe(
+        (data: any) =>  {
+          rowWithData.id = data.insertId;
+          this.addRowData(rowWithData);
+          this.refreshTableData();
+        },
+        (err: any) => {
+          this.notify.warn('Error Add' );
+        }
+      );
     });
   }
 
@@ -103,10 +110,16 @@ export class TableBaseComponent {
       }
 
       this.service.update(rowModified)
-      .subscribe(responseRow => {
-        this.updateRowData(rowModified);
-        this.refreshTableData();
-      });
+      .subscribe(
+        (responseRow: any) =>  {
+          this.updateRowData(rowModified);
+          this.refreshTableData();
+        },
+        (err: any) => {
+          console.log(err);
+          this.notify.warn(err.message);
+        }
+      );
     });
   }
 
@@ -128,9 +141,14 @@ export class TableBaseComponent {
 
   private loaddatasource(): void {
     this.service.getAll()
-    .subscribe( data => {
-      this.datasource.data = data;
-    });
+    .subscribe(
+      (data: any) =>  {
+        this.datasource.data = data;
+      },
+      (err: any) => {
+        this.notify.warn(err.message);
+      }
+    );
   }
 
   private addRowData(row: any): void {
