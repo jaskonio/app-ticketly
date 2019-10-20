@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ResponseApi } from '../../shared/model/responseApi';
 import { environment } from 'src/environments/environment';
-import { ModelBase } from '../model/modelBase';
 
 @Injectable()
 export class ServiceBase {
