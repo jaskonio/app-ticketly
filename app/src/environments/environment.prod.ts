@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://jonsatan.local:3000/api'
+  baseUrl: 'http://api_db/api'
 };

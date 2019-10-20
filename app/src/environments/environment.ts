@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://jonataan.local:3000/api'
+  baseUrl: 'http://jonatan.local:3000/api'
 };
 
 /*
