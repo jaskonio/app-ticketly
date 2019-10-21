@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile-prod.yml
+    ports:
+      - "5000:4200"
+    depends_on:
+      - api_db
+  db:
+    build: ./db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'ticketly'
+  api_db:
+    image: markuman/xmysql
+    restart: always
+    ports: 
+      - 3000:80
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: 'db'
+      DATABASE_USER: 'root'
+      DATABASE_PASSWORD: 'root'
+      DATABASE_NAME: 'ticketly'
+    links:
+      - db:db
