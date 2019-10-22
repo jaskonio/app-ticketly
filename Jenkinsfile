@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo Build'
+                sh 'docker-compose -f docker-compose-dev build'
             }
         }
         stage('Test') {
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'echo Deliver'
+                sh 'docker-compose -f docker-compose-dev up -d'
             }
         }
     }
