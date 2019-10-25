@@ -13,6 +13,8 @@ pipeline {
         }
         stage('Deliver') {
             steps {
+                sh 'echo "########## STOP DOCKER-COMPOSE ##########"'
+                sh 'docker-compose -f docker-compose-dev.yml down'
                 sh 'docker-compose -f docker-compose-dev.yml up -d'
             }
         }
